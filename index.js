@@ -4,7 +4,12 @@ const Product = require('/Users/macbook/sei_classwork/319-mongodb/mongodb-SBA/mo
 const app = express();
 
 
+// Using Middleware
 app.use(express.json());
+
+
+// Routes
+app.use('/api/products', productRoute);
 
 
 app.get('/', (req, res) => {
@@ -20,7 +25,7 @@ app.get('/api/products', async (req, res) => {
     }
 });
 
-app.get('/api/product/:id', async (req, res) => {
+app.get('/api/products/:id', async (req, res) => {
 
     try {
         const { id } = req.params;
@@ -44,7 +49,7 @@ app.post('/api/products', async (req, res) => {
 });
 
 // update a product
-app.put('/api/product/:id', async (req, res) => {
+app.put('/api/products/:id', async (req, res) => {
     try{
         const{ id } = req.params;
         const product = await Product.findByIdAndUpdate(id, req.body);
@@ -62,7 +67,7 @@ app.put('/api/product/:id', async (req, res) => {
 
 // delete a product 
 
-app.delete('/api/product/:id', async (req, res) => {
+app.delete('/api/products/:id', async (req, res) => {
     try {
         const {id} = req.params;
 
