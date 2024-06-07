@@ -9,6 +9,11 @@ app.get('/', (req, res) => {
     res.send("Hello from Node API Server Updated");
 });
 
+app.post('/api/products', (req, res) => {
+    res.send("Data Received")
+})
+
+
 mongoose.connect("mongodb+srv://SaintAdmin:AbJbxATNvsbmE6Iz@clusterdb1.wwdokmu.mongodb.net/Node-API?retryWrites=true&w=majority&appName=ClusterDB1")
 .then(() => {
     console.log("Connected to database!");
