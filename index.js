@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const productRoute = require("./routes/product.route");
 const Product = require('/Users/macbook/sei_classwork/319-mongodb/mongodb-SBA/models/product.model.js');
 const app = express();
 
@@ -16,14 +17,7 @@ app.get('/', (req, res) => {
     res.send("Hello from Node API Server Updated");
 });
 
-app.get('/api/products', async (req, res) => {
-    try {
-        const products = await Product.find({});
-        res.status(200).json(products);
-    } catch (error) {
-        res.status(500).json({message: error.message});
-    }
-});
+
 
 app.get('/api/products/:id', async (req, res) => {
 
