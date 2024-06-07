@@ -10,7 +10,8 @@ app.get('/', (req, res) => {
 });
 
 app.post('/api/products', (req, res) => {
-    res.send("Data Received")
+    console.log(req.body);
+    res.send(req.body);
 })
 
 
