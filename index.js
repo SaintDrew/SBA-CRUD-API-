@@ -1,17 +1,23 @@
 const express = require('express');
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const Product = require('.product.model.js');
+const app = express();
 
-const app = express() 
 
+app.use(express.json());
 
 
 app.get('/', (req, res) => {
     res.send("Hello from Node API Server Updated");
 });
 
-app.post('/api/products', (req, res) => {
-    console.log(req.body);
-    res.send(req.body);
+app.post('/api/products',async (req, res) => {
+    try {
+        const product = await Product.create(res.body);
+        res.status(200).json(product);
+    } catch (error) {
+        res.status(500).json({message: error.message});
+    }
 })
 
 
