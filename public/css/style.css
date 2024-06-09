@@ -75,3 +75,85 @@ img {
     overflow: hidden;
     border-radius: var(-border-radius);
 }
+
+
+/* Main Header */
+.header {
+    display:grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    padding-top: 10px;
+    grid-template-areas: 
+    "logo button"
+    "menu menu"
+    ;
+}
+
+@media only screen and (min-width: 768px) {
+    .header {
+        grid-template-columns: auto 1fr auto;
+        grid-template-areas: 
+        "logo menu buttton";
+    }
+}
+
+.header_logo {
+    grid-area: logo;
+    font-weight: 800;
+    font-size: 25px;
+    text-decoration: none;
+}
+.header_logo:hover {
+    text-decoration: underline;
+}
+
+.header_nav {
+    display: flex;
+    justify-content: center;
+    grid-area: menu;
+}
+
+.header_button {
+    grid-area: button;
+    display: felx;
+    justify-content: end;
+}
+
+.header_button button {
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+    border: 0;
+    padding: 6px 12px;
+    background: none;
+    border-radius: var(-border-radius);
+    border: 2px solid transparent;
+    font-size: var(-font-size-base);
+    font-weight: 600;
+    color:var(-black);
+}
+
+.header_button button:hover {
+    border: 2px solid var(-black);
+}
+
+/* Header -> Nav bar */
+.header_nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 1rem;
+    font-weight: 600;
+    padding: 0;
+}
+.header_nav ul a {
+    padding-top: 10px;
+}
+
+.header_nav ul a:hover {
+    text-decoration: underline;
+}
+
+.header_nav ul a.active {
+    color: var(-gray);
+}
