@@ -240,6 +240,19 @@ img {
     filter: none;
 }
 
+.pagination {
+    font-size: 1.3rem;
+    color: var(--gray);
+    text-decoration: none;
+    margin-top: 40px;
+    display: inline-block;
+}
+
+.pagination:hover {
+    white-space: pre-wrap;
+}
+
+
 .article {
     white-space: pre-wrap;
 }
