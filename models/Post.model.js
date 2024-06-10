@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
-const Schema = mongoose.Schema;
-const PostSchema = new Schema({
+const PostSchema= mongoose.Schema(
+  {
     title: {
       type: String,
-      required: true
+      required: [true, "Please list title"]
     },
 
     name: {
@@ -33,5 +33,5 @@ const PostSchema = new Schema({
 );
 
 const Post = mongoose.model("Post", PostSchema);
-module.exports = Post
+module.exports = Post;
 

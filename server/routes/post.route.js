@@ -1,19 +1,19 @@
 // const express = require("express");
-// const Post = require('../models/Post');
+// const Article = require('../models/Article');
 // const router = express.Router();
-// const {getPosts, getPost, createPost, updatePost, deletePost} = require('../../controllers/post.controller');
+// const {getArticles, getArticle, createArticle, updateArticle, deleteArticle} = require('../../controllers/article.controller');
 
 
-// router.get('/', getPosts);
-// router.get("/:id", getPost);
+// router.get('/', getArticle);
+// router.get("/:id", getArticle);
 
-// router.post("/", createPost);
+// router.post("/", createArticle);
 
-// // updating a product
-// router.put("/:id", updatePost);
+// // updating a article
+// router.put("/:id", updateArticle);
 
-// // deleting a product
-// router.delete("/:id", deletePost);
+// // deleting a article
+// router.delete("/:id", deleteArticle);
 
 
 // module.exports = router;
