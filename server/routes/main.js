@@ -9,69 +9,76 @@ const Post = require("../models/Post");
 
 // Routes
 router.get('', async (req, res) => {
-  const locals = {
-    title: "The People's Voice",
-    description: "The People, Their Voice, Their Way",
-  }
-
   try {
-    const data = await Post.find({});
-    res.render("index", { locals, data });
+    const locals = {
+      title: "The People's Voice",
+      description: "The People, Their Voice, Their Way",
+    };
+
+    let perPage = 5;
+    let page = req.query.page || 1;
+
+    const data = await Post.aggregate([ { $sort: { createdAt: -1 } } ])
+      .skip(perPage * page - perPage)
+      .limit(perPage)
+      .exec();
+
+    const count = await Post.countDocuments();
+    const nextPage = parseInt(page) + 1;
+    const hasNextPage = nextPage <= Math.ceil(count / perPage);
+
+    res.render("index", {
+      locals,
+      data,
+      current: page,
+      nextPage: hasNextPage ? nextPage : null,
+    });
   } catch (error) {
-   console.log(error)
+    console.log(error);
   }
 });
-
 
 router.get("/about", (req, res) => {
   res.render("about");
 });
 
-// function insertPostData() {
-//     Post.insertMany([
-//         {
-//             title: "News Flash Post",
-//             body: "This is the body text"
-//         },
-//         {
-//             title: "The People of America",
-//             body: "This is the body text"
-//         },
-//         {
-//             title: "THe North vs The South Civil War Part 2",
-//             body: "This is the body text"
-//         },
-//         {
-//             title: "Racism & Sexism",
-//             body: "This is the body text"
-//         },
-//         {
-//             title: "The Wild Wild West",
-//             body: "This is the body text"
-//         },
-//         {
-//             title: "Texas vs Mexico Border",
-//             body: "This is the body text"
-//         },
-//         {
-//             title: "Left Wing vs Rght Wing... Same Bird?",
-//             body: "This is the body text"
-//         },
-//         {
-//             title: "Inflation, Inflation, Inflation",
-//             body: "This is the body text"
-//         },
-//         {
-//             title: "Teachers need more money",
-//             body: "This is the body text"
-//         },
-//         {
-//             title: "Our Government does not care about us",
-//             body: "This is the body text"
-//         },
-//     ])
-// }
+// router.get('', async (req, res) => {
+//     const locals = {
+//       title: "The People's Voice",
+//       description: "The People, Their Voice, Their Way",
+//     }
 
-// insertPostData();
+//     try {
+//       const data = await Post.find();
+//       res.render('index', { locals, data });
+//     } catch (error) {
+//      console.log(error)
+//     }
+//   });
+
+/**
+ * GET
+ * POST
+ */
+
+router.get('/post/:id', async (req, res) => {
+try {
+
+    const locals = {
+        title: "The People's Voice",
+        description: "The People, Their Voice, Their Way",
+      }
+
+
+      let dive = req.params.id
+
+
+      const data = await Post.findById({_id: dive });
+      res.render('index', { locals, data });
+    } catch (error) {
+     console.log(error)
+    }
+  });
+
 
 module.exports = router;
