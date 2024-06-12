@@ -28,7 +28,7 @@ app.get('/api/posts/', async (req, res) =>{
     }
 });
 
-app.get('/api/post/:id', async (req, res) =>{
+app.get('/api/posts/:id', async (req, res) =>{
     try{
         const { id } = req.params;
         const post = await Post.findById(id);
@@ -48,7 +48,7 @@ app.post('/api/posts', async (req, res) =>{
 });
 
 // update a post
-app.put('/api/post/:id', async (req, res) =>{
+app.put('/api/posts/:id', async (req, res) =>{
     try{
         const { id } = req.params;
         const post = await Post.findByIdAndUpdate(id, req.body);
@@ -65,7 +65,7 @@ app.put('/api/post/:id', async (req, res) =>{
 });
 
 // delete a Post 
-app.delete('/api/post/:id', async (req, res)=> {
+app.delete('/api/posts/:id', async (req, res)=> {
     try{
         const { id } = req.params;
 
