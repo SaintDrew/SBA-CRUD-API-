@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const postRoute = require("./routes/routes/post.route.js");
 const Post = require('/Users/macbook/sei_classwork/319-mongodb/mongodb-SBA/models/post.model.js');
+const postRoute = require("./routes/routes/post.route.js");
 const app = express();
 
 
