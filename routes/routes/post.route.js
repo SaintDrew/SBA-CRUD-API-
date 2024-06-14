@@ -13,8 +13,8 @@ router.post("/", createPost);
 // updating a article
 router.put("/:id", updatePost);
 
-// // deleting a article
-// router.delete("/:id", deletePost);
+// deleting a article
+router.delete("/:id", deletePost);
 
 
 module.exports = router;
